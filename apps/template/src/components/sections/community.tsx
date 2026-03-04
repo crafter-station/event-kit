@@ -1,4 +1,5 @@
 import { event } from "@/lib/event";
+import { MessageCircle } from "lucide-react";
 
 export function Community() {
 	const community = event.features.community;
@@ -22,8 +23,9 @@ export function Community() {
 							href={community.whatsappUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="rounded-md bg-[#25D366] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+							className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 active:scale-95"
 						>
+							<MessageCircle size={16} />
 							Join WhatsApp
 						</a>
 					)}
@@ -32,8 +34,9 @@ export function Community() {
 							href={community.discordUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="rounded-md bg-[#5865F2] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+							className="inline-flex items-center gap-2 rounded-md bg-[#5865F2] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 active:scale-95"
 						>
+							<MessageCircle size={16} />
 							Join Discord
 						</a>
 					)}

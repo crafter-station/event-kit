@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedGroup } from "@/components/motion/animated-group";
 import { event } from "@/lib/event";
 
 export function Sponsors() {
@@ -15,20 +18,30 @@ export function Sponsors() {
 						Our <span className="text-[var(--accent)]">Partners</span>
 					</h2>
 				</div>
-				<div className="flex flex-col items-center gap-8">
+				<div className="flex flex-col items-center gap-12">
 					{sponsorConfig.tiers.map((tier) => (
-						<div key={tier.id} className="text-center">
-							<p
-								className="font-mono text-xs uppercase tracking-widest mb-4"
-								style={{ color: tier.color }}
+						<div key={tier.id} className="text-center w-full">
+							<div className="flex items-center justify-center gap-2 mb-6">
+								<span
+									className="inline-block h-2 w-2 rounded-full"
+									style={{ background: tier.color }}
+								/>
+								<p
+									className="font-mono text-sm uppercase tracking-widest font-semibold"
+									style={{ color: tier.color }}
+								>
+									{tier.name}
+								</p>
+							</div>
+							<AnimatedGroup
+								preset="fade"
+								triggerOnView
+								className="flex items-center justify-center gap-6 flex-wrap"
 							>
-								{tier.name}
-							</p>
-							<div className="flex items-center justify-center gap-6 flex-wrap">
-								<div className="h-16 w-40 rounded-lg border border-white/5 bg-[var(--surface)] flex items-center justify-center text-xs text-[var(--muted)]">
+								<div className="h-16 w-40 rounded-lg border border-[var(--border)] bg-[var(--surface)] flex items-center justify-center text-xs text-[var(--muted)] transition-all duration-300 hover:-translate-y-1">
 									Sponsor Logo
 								</div>
-							</div>
+							</AnimatedGroup>
 						</div>
 					))}
 				</div>

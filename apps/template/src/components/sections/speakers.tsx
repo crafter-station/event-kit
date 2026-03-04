@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedGroup } from "@/components/motion/animated-group";
 import { event } from "@/lib/event";
 
 const PLACEHOLDER_SPEAKERS = [
@@ -5,6 +8,19 @@ const PLACEHOLDER_SPEAKERS = [
 	{ name: "Carlos Ruiz", title: "CTO", company: "StartupAI", talk: "AI-First Architecture" },
 	{ name: "Maria Chen", title: "Research Lead", company: "DeepLab", talk: "LLMs in Production" },
 ];
+
+function Avatar({ name, photo }: { name: string; photo?: string }) {
+	if (photo) {
+		return <img src={photo} alt={name} className="h-20 w-20 rounded-full object-cover" />;
+	}
+	return (
+		<div className="h-20 w-20 rounded-full bg-[var(--border)] flex items-center justify-center">
+			<span className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--accent)]">
+				{name.charAt(0)}
+			</span>
+		</div>
+	);
+}
 
 export function Speakers() {
 	if (!event.features.speakers?.enabled) return null;
@@ -20,13 +36,19 @@ export function Speakers() {
 						Meet the <span className="text-[var(--accent)]">Speakers</span>
 					</h2>
 				</div>
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+				<AnimatedGroup
+					preset="blur-slide"
+					triggerOnView
+					className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+				>
 					{PLACEHOLDER_SPEAKERS.map((s) => (
 						<div
 							key={s.name}
-							className="rounded-lg border border-white/5 bg-[var(--surface)] p-6 transition-colors hover:border-white/10"
+							className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:scale-[1.02] hover:border-[var(--accent)]/20"
 						>
-							<div className="mb-4 h-20 w-20 rounded-full bg-white/5" />
+							<div className="mb-4">
+								<Avatar name={s.name} />
+							</div>
 							<h3 className="font-medium">{s.name}</h3>
 							<p className="text-xs text-[var(--muted)]">
 								{s.title} @ {s.company}
@@ -34,11 +56,11 @@ export function Speakers() {
 							<p className="mt-3 text-sm text-[var(--accent)]">{s.talk}</p>
 						</div>
 					))}
-				</div>
+				</AnimatedGroup>
 				<div className="mt-8 text-center">
 					<a
 						href="/speakers"
-						className="text-sm text-[var(--muted)] hover:text-white transition-colors"
+						className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 					>
 						View all speakers →
 					</a>

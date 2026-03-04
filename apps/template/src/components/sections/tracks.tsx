@@ -1,3 +1,6 @@
+"use client";
+
+import { AnimatedGroup } from "@/components/motion/animated-group";
 import { event } from "@/lib/event";
 
 export function Tracks() {
@@ -15,14 +18,18 @@ export function Tracks() {
 						<span className="text-[var(--accent)]">Tracks</span>
 					</h2>
 				</div>
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+				<AnimatedGroup
+					preset="blur-slide"
+					triggerOnView
+					className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+				>
 					{hackathon.tracks.map((track) => (
 						<div
 							key={track.slug}
-							className="rounded-lg border border-white/5 bg-[var(--surface)] p-6 transition-colors hover:border-white/10"
+							className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:border-[var(--accent)]/20 active:scale-[0.98]"
 						>
 							<div className="mb-3 flex items-center gap-2">
-								<div className="h-3 w-3 rounded-full" style={{ background: track.color }} />
+								<div className="h-3 w-3 rounded-full shrink-0" style={{ background: track.color }} />
 								<h3 className="font-medium">{track.name}</h3>
 							</div>
 							{track.description && (
@@ -30,7 +37,7 @@ export function Tracks() {
 							)}
 						</div>
 					))}
-				</div>
+				</AnimatedGroup>
 			</div>
 		</section>
 	);

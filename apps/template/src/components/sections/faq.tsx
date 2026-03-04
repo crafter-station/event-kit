@@ -1,6 +1,7 @@
 "use client";
 
 import { event } from "@/lib/event";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export function FAQ() {
@@ -24,7 +25,7 @@ export function FAQ() {
 					{faqConfig.items.map((item, i) => (
 						<div
 							key={item.question}
-							className="rounded-lg border border-white/5 bg-[var(--surface)] overflow-hidden"
+							className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-hidden"
 						>
 							<button
 								type="button"
@@ -32,11 +33,21 @@ export function FAQ() {
 								className="flex w-full items-center justify-between p-4 text-left text-sm font-medium transition-colors hover:bg-white/[0.02]"
 							>
 								{item.question}
-								<span className="ml-4 text-[var(--muted)] shrink-0">{open === i ? "−" : "+"}</span>
+								<ChevronDown
+									size={16}
+									className={`ml-4 shrink-0 text-[var(--muted)] transition-transform duration-300 ${
+										open === i ? "rotate-180" : ""
+									}`}
+								/>
 							</button>
-							{open === i && (
-								<div className="px-4 pb-4 text-sm text-[var(--muted)]">{item.answer}</div>
-							)}
+							<div
+								className="grid transition-[grid-template-rows] duration-300"
+								style={{ gridTemplateRows: open === i ? "1fr" : "0fr" }}
+							>
+								<div className="overflow-hidden">
+									<div className="px-4 pb-4 text-sm text-[var(--muted)]">{item.answer}</div>
+								</div>
+							</div>
 						</div>
 					))}
 				</div>

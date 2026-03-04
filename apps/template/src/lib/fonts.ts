@@ -1,19 +1,21 @@
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 
-export const fontDisplay = Space_Grotesk({
+const fontDisplay = Playfair_Display({
 	subsets: ["latin"],
-	weight: ["700"],
+	weight: ["700", "900"],
 	variable: "--font-display",
 });
 
-export const fontBody = Inter({
+const fontBody = Inter({
 	subsets: ["latin"],
 	weight: ["400", "500", "600"],
 	variable: "--font-body",
 });
 
-export const fontMono = JetBrains_Mono({
+const fontMono = JetBrains_Mono({
 	subsets: ["latin"],
 	weight: ["400", "500"],
 	variable: "--font-mono",
 });
+
+export { fontDisplay, fontBody, fontMono };
