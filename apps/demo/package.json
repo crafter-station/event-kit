@@ -8,12 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "@crafter/event-kit-core": "workspace:*",
     "@crafter/event-kit-badge-3d": "workspace:*",
+    "@crafter/event-kit-core": "workspace:*",
     "@crafter/event-kit-react": "workspace:*",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
+    "@react-three/rapier": "^2.2.0",
+    "meshline": "^3.3.1",
     "next": "^15.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@types/react": "^19",

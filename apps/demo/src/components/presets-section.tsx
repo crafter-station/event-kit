@@ -1,47 +1,35 @@
 "use client";
 
+import type { ThemeStyles } from "@/lib/theme-styles";
 import { FLAG_PRESETS, STYLE_PRESETS } from "@crafter/event-kit-badge-3d";
 
 interface PresetsSectionProps {
 	accent: string;
+	themeStyles: ThemeStyles;
 }
 
-export function PresetsSection({ accent }: PresetsSectionProps) {
+export function PresetsSection({ accent, themeStyles }: PresetsSectionProps) {
 	return (
-		<section
-			style={{
-				padding: "80px 24px",
-				maxWidth: 1100,
-				margin: "0 auto",
-			}}
-		>
+		<section style={{ padding: "80px 24px", maxWidth: 1100, margin: "0 auto" }}>
 			<div style={{ marginBottom: 40, textAlign: "center" }}>
-				<h2
-					style={{
-						fontSize: "clamp(24px, 4vw, 40px)",
-						fontWeight: 800,
-						letterSpacing: "-0.03em",
-						margin: 0,
-					}}
-				>
-					Presets
+				<div style={{ ...themeStyles.label, color: accent, marginBottom: 8 }}>
+					{themeStyles.cursorBlink && (
+						<span className="blink" style={{ marginRight: 4 }}>
+							{">_"}
+						</span>
+					)}
+					PRESETS
+				</div>
+				<h2 style={{ ...themeStyles.heading, fontSize: "clamp(24px, 4vw, 40px)", margin: 0 }}>
+					{FLAG_PRESETS.length} flags + {STYLE_PRESETS.length} styles
 				</h2>
 				<p style={{ color: "#777", fontSize: 14, marginTop: 8 }}>
-					{FLAG_PRESETS.length} flags + {STYLE_PRESETS.length} styles, ready to use.
+					Ready to use particle configurations.
 				</p>
 			</div>
 
 			<div style={{ marginBottom: 48 }}>
-				<h3
-					style={{
-						fontSize: 13,
-						color: accent,
-						fontWeight: 600,
-						letterSpacing: "0.1em",
-						marginBottom: 16,
-						fontFamily: "monospace",
-					}}
-				>
+				<h3 style={{ ...themeStyles.label, color: accent, marginBottom: 16 }}>
 					FLAGS ({FLAG_PRESETS.length})
 				</h3>
 				<div
@@ -56,11 +44,11 @@ export function PresetsSection({ accent }: PresetsSectionProps) {
 							key={p.id}
 							style={{
 								padding: "12px 14px",
-								background: "rgba(255,255,255,0.03)",
-								border: "1px solid rgba(255,255,255,0.06)",
-								borderRadius: 10,
+								...themeStyles.card,
 								cursor: "default",
+								position: "relative",
 							}}
+							className={themeStyles.scanlines ? "scanlines" : undefined}
 						>
 							<div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 8 }}>
 								<span style={{ fontSize: 16 }}>{p.emoji}</span>
@@ -73,7 +61,7 @@ export function PresetsSection({ accent }: PresetsSectionProps) {
 										style={{
 											flex: 1,
 											height: 6,
-											borderRadius: 3,
+											borderRadius: themeStyles.card.borderRadius === 0 ? 0 : 3,
 											background: g.color,
 										}}
 									/>
@@ -85,16 +73,7 @@ export function PresetsSection({ accent }: PresetsSectionProps) {
 			</div>
 
 			<div>
-				<h3
-					style={{
-						fontSize: 13,
-						color: accent,
-						fontWeight: 600,
-						letterSpacing: "0.1em",
-						marginBottom: 16,
-						fontFamily: "monospace",
-					}}
-				>
+				<h3 style={{ ...themeStyles.label, color: accent, marginBottom: 16 }}>
 					STYLES ({STYLE_PRESETS.length})
 				</h3>
 				<div
@@ -109,11 +88,11 @@ export function PresetsSection({ accent }: PresetsSectionProps) {
 							key={p.id}
 							style={{
 								padding: "12px 14px",
-								background: "rgba(255,255,255,0.03)",
-								border: "1px solid rgba(255,255,255,0.06)",
-								borderRadius: 10,
+								...themeStyles.card,
 								cursor: "default",
+								position: "relative",
 							}}
+							className={themeStyles.scanlines ? "scanlines" : undefined}
 						>
 							<div style={{ fontSize: 13, fontWeight: 500, marginBottom: 8 }}>{p.name}</div>
 							<div style={{ display: "flex", gap: 3 }}>
@@ -123,7 +102,7 @@ export function PresetsSection({ accent }: PresetsSectionProps) {
 										style={{
 											width: 16,
 											height: 16,
-											borderRadius: 4,
+											borderRadius: themeStyles.card.borderRadius === 0 ? 0 : 4,
 											background: g.color,
 											boxShadow: g.emissiveIntensity > 0.5 ? `0 0 8px ${g.emissive}` : "none",
 										}}

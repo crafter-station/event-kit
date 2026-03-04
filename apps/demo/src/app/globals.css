@@ -71,3 +71,46 @@ body {
 .fade-in-4 {
 	animation-delay: 0.2s;
 }
+
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+
+.blink {
+	animation: blink 1s step-end infinite;
+}
+
+.scanlines::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.08) 2px,
+		rgba(0, 0, 0, 0.08) 4px
+	);
+}
+
+.bg-grid-64 {
+	background-image: linear-gradient(to right, rgba(233, 161, 201, 0.04) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(233, 161, 201, 0.04) 1px, transparent 1px);
+	background-size: 64px 64px;
+}
+
+.bg-dither {
+	background-image: radial-gradient(circle at 1px 1px, rgba(0, 255, 65, 0.06) 1px, transparent 1px);
+	background-size: 6px 6px;
+}
+
+.crt-glow {
+	box-shadow: 0 0 20px rgba(0, 255, 65, 0.15), inset 0 0 40px rgba(0, 255, 65, 0.03);
+}

@@ -1,13 +1,15 @@
 "use client";
 
+import type { ThemeStyles } from "@/lib/theme-styles";
 import { WatermarkBanner } from "@crafter/event-kit-react";
 import { useCallback, useState } from "react";
 
 interface InstallSectionProps {
 	accent: string;
+	themeStyles: ThemeStyles;
 }
 
-export function InstallSection({ accent }: InstallSectionProps) {
+export function InstallSection({ accent, themeStyles }: InstallSectionProps) {
 	const [copied, setCopied] = useState(false);
 	const command = "bun add @crafter/event-kit-core @crafter/event-kit-react";
 
@@ -18,22 +20,17 @@ export function InstallSection({ accent }: InstallSectionProps) {
 	}, []);
 
 	return (
-		<section
-			style={{
-				padding: "80px 24px 40px",
-				maxWidth: 700,
-				margin: "0 auto",
-			}}
-		>
+		<section style={{ padding: "80px 24px 40px", maxWidth: 700, margin: "0 auto" }}>
 			<div style={{ marginBottom: 40, textAlign: "center" }}>
-				<h2
-					style={{
-						fontSize: "clamp(24px, 4vw, 40px)",
-						fontWeight: 800,
-						letterSpacing: "-0.03em",
-						margin: 0,
-					}}
-				>
+				<div style={{ ...themeStyles.label, color: accent, marginBottom: 8 }}>
+					{themeStyles.cursorBlink && (
+						<span className="blink" style={{ marginRight: 4 }}>
+							{">_"}
+						</span>
+					)}
+					INSTALL
+				</div>
+				<h2 style={{ ...themeStyles.heading, fontSize: "clamp(24px, 4vw, 40px)", margin: 0 }}>
 					Get started
 				</h2>
 				<p style={{ color: "#777", fontSize: 14, marginTop: 8 }}>
@@ -50,20 +47,15 @@ export function InstallSection({ accent }: InstallSectionProps) {
 					justifyContent: "space-between",
 					width: "100%",
 					padding: "16px 20px",
-					background: "rgba(255,255,255,0.03)",
-					border: `1px solid ${copied ? accent : "rgba(255,255,255,0.08)"}`,
-					borderRadius: 12,
+					...themeStyles.card,
+					borderColor: copied ? accent : (themeStyles.card.borderColor ?? "rgba(255,255,255,0.08)"),
 					cursor: "pointer",
 					transition: "border-color 0.3s ease",
+					position: "relative",
 				}}
+				className={themeStyles.scanlines ? "scanlines" : undefined}
 			>
-				<code
-					style={{
-						fontSize: 14,
-						color: "#ccc",
-						fontFamily: "monospace",
-					}}
-				>
+				<code style={{ fontSize: 14, color: "#ccc", fontFamily: "monospace" }}>
 					<span style={{ color: accent }}>$</span> {command}
 				</code>
 				<span
@@ -78,24 +70,12 @@ export function InstallSection({ accent }: InstallSectionProps) {
 				</span>
 			</button>
 
-			<div
-				style={{
-					display: "flex",
-					justifyContent: "center",
-					gap: 24,
-					marginTop: 32,
-				}}
-			>
+			<div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 32 }}>
 				<a
 					href="https://github.com/crafter-station/event-kit"
 					target="_blank"
 					rel="noopener noreferrer"
-					style={{
-						fontSize: 13,
-						color: "#666",
-						textDecoration: "none",
-						fontFamily: "monospace",
-					}}
+					style={{ fontSize: 13, color: "#666", textDecoration: "none", fontFamily: "monospace" }}
 				>
 					GitHub
 				</a>
@@ -103,12 +83,7 @@ export function InstallSection({ accent }: InstallSectionProps) {
 					href="https://www.npmjs.com/org/crafter"
 					target="_blank"
 					rel="noopener noreferrer"
-					style={{
-						fontSize: 13,
-						color: "#666",
-						textDecoration: "none",
-						fontFamily: "monospace",
-					}}
+					style={{ fontSize: 13, color: "#666", textDecoration: "none", fontFamily: "monospace" }}
 				>
 					npm
 				</a>

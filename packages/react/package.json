@@ -20,7 +20,19 @@
   },
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "three": ">=0.160",
+    "@react-three/fiber": ">=9",
+    "@react-three/drei": ">=10",
+    "@react-three/rapier": ">=2",
+    "meshline": ">=3"
+  },
+  "peerDependenciesMeta": {
+    "three": { "optional": true },
+    "@react-three/fiber": { "optional": true },
+    "@react-three/drei": { "optional": true },
+    "@react-three/rapier": { "optional": true },
+    "meshline": { "optional": true }
   },
   "devDependencies": {
     "@types/react": "^19",

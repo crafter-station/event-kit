@@ -6,5 +6,5 @@ export default defineConfig({
 	dts: true,
 	clean: true,
 	sourcemap: true,
-	external: [/^@crafter\//, /^react/],
+	external: [/^@crafter\//, /^react/, /^three/, /^@react-three\//, /^meshline/],
 });

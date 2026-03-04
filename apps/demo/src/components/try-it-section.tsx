@@ -1,5 +1,6 @@
 "use client";
 
+import type { ThemeStyles } from "@/lib/theme-styles";
 import type { ParticleConfig } from "@crafter/event-kit-badge-3d";
 import { defaultParticleConfig } from "@crafter/event-kit-badge-3d";
 import { pickAccentColor } from "@crafter/event-kit-core";
@@ -8,34 +9,29 @@ import { useState } from "react";
 
 interface TryItSectionProps {
 	accent: string;
+	themeStyles: ThemeStyles;
 }
 
-export function TryItSection({ accent }: TryItSectionProps) {
+export function TryItSection({ accent, themeStyles }: TryItSectionProps) {
 	const [particleConfig, setParticleConfig] = useState<ParticleConfig>(defaultParticleConfig);
 	const currentAccent = pickAccentColor(particleConfig.groups.map((g) => g.color));
 
 	return (
-		<section
-			style={{
-				minHeight: "100vh",
-				padding: "80px 24px",
-				maxWidth: 1100,
-				margin: "0 auto",
-			}}
-		>
+		<section style={{ minHeight: "100vh", padding: "80px 24px", maxWidth: 1100, margin: "0 auto" }}>
 			<div style={{ marginBottom: 40, textAlign: "center" }}>
-				<h2
-					style={{
-						fontSize: "clamp(24px, 4vw, 40px)",
-						fontWeight: 800,
-						letterSpacing: "-0.03em",
-						margin: 0,
-					}}
-				>
-					Try it
+				<div style={{ ...themeStyles.label, color: accent, marginBottom: 8 }}>
+					{themeStyles.cursorBlink && (
+						<span className="blink" style={{ marginRight: 4 }}>
+							{">_"}
+						</span>
+					)}
+					TRY_IT
+				</div>
+				<h2 style={{ ...themeStyles.heading, fontSize: "clamp(24px, 4vw, 40px)", margin: 0 }}>
+					Create your badge
 				</h2>
 				<p style={{ color: "#777", fontSize: 14, marginTop: 8 }}>
-					Create your badge. Choose particles. Share it.
+					Fill the form. Choose particles. Share it.
 				</p>
 			</div>
 
@@ -53,20 +49,17 @@ export function TryItSection({ accent }: TryItSectionProps) {
 							display: "flex",
 							justifyContent: "center",
 							padding: 24,
-							background: "rgba(255,255,255,0.02)",
-							borderRadius: 16,
-							border: "1px solid rgba(255,255,255,0.06)",
+							...themeStyles.card,
+							position: "relative",
 						}}
+						className={themeStyles.scanlines ? "scanlines" : undefined}
 					>
 						<BadgeCard
 							name={data.name}
 							role={data.role}
 							organization={data.organization}
 							particleColors={data.particleConfig.groups.map((g) => g.color)}
-							style={{
-								width: 300,
-								boxShadow: `0 0 40px ${currentAccent}10`,
-							}}
+							style={{ width: 300 }}
 						/>
 					</div>
 				)}
@@ -77,9 +70,7 @@ export function TryItSection({ accent }: TryItSectionProps) {
 								style={{
 									display: "inline-flex",
 									padding: "8px 16px",
-									background: "rgba(255,255,255,0.06)",
-									border: "1px solid rgba(255,255,255,0.1)",
-									borderRadius: 8,
+									...themeStyles.button,
 									fontSize: 13,
 									color: "#fff",
 									cursor: "pointer",
@@ -93,9 +84,7 @@ export function TryItSection({ accent }: TryItSectionProps) {
 								style={{
 									display: "inline-flex",
 									padding: "8px 16px",
-									background: "rgba(255,255,255,0.06)",
-									border: "1px solid rgba(255,255,255,0.1)",
-									borderRadius: 8,
+									...themeStyles.button,
 									fontSize: 13,
 									color: "#fff",
 									cursor: "pointer",
