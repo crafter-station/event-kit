@@ -1,0 +1,43 @@
+{
+  "name": "@crafter/event-kit-badge-3d",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@crafter/event-kit-core": "workspace:*",
+    "zod": "^3.24.0"
+  },
+  "peerDependencies": {
+    "@react-three/drei": ">=10",
+    "@react-three/fiber": ">=9",
+    "@react-three/rapier": ">=2",
+    "meshline": ">=3",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "three": ">=0.160"
+  },
+  "peerDependenciesMeta": {
+    "@react-three/drei": { "optional": true },
+    "@react-three/fiber": { "optional": true },
+    "@react-three/rapier": { "optional": true },
+    "meshline": { "optional": true },
+    "react": { "optional": true },
+    "react-dom": { "optional": true },
+    "three": { "optional": true }
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

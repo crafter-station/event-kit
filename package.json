@@ -1,0 +1,16 @@
+{
+  "name": "event-kit",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "build": "bun run --filter './packages/*' build",
+    "check": "biome check --write .",
+    "test": "bun run --filter './packages/*' test",
+    "clean": "rm -rf packages/*/dist apps/*/dist"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

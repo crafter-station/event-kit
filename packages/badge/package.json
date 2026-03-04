@@ -1,0 +1,28 @@
+{
+  "name": "@crafter/event-kit-badge",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@crafter/event-kit-core": "workspace:*",
+    "qrcode": "^1.5.4",
+    "satori": "^0.12.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@types/qrcode": "^1.5.5",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}
