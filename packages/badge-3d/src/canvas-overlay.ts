@@ -1,4 +1,4 @@
-import type { EventIdentity } from "@crafter/event-kit-core";
+import type { EventIdentity } from "@event-sdk/core";
 
 export interface BadgeOverlayInfo {
 	name: string;

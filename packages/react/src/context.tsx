@@ -1,6 +1,6 @@
 "use client";
 
-import type { EventIdentity } from "@crafter/event-kit-core";
+import type { EventIdentity } from "@event-sdk/core";
 import { type ReactNode, createContext, useContext } from "react";
 
 const EventKitContext = createContext<EventIdentity | null>(null);

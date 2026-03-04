@@ -1,4 +1,4 @@
-import { hexToRgb, pickAccentColor } from "@crafter/event-kit-core";
+import { hexToRgb, pickAccentColor } from "@event-sdk/core";
 import satori from "satori";
 import sharp from "sharp";
 import type { BadgeGenerateOptions, FontData, GeneratedAsset } from "./types";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ParticleConfig, ParticleGroup } from "@crafter/event-kit-badge-3d";
+import type { ParticleConfig, ParticleGroup } from "@event-sdk/badge-3d";
 import { useCallback, useState } from "react";
 
 const DEFAULT_GROUP: ParticleGroup = {

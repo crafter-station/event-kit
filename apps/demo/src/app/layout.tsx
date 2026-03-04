@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "@crafter/event-kit",
+	title: "@event-sdk",
 	description: "Hackathon SDK — badges, onboarding, and social assets for tech events",
 };
 

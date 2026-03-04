@@ -1,5 +1,5 @@
 {
-  "name": "@crafter/event-kit-demo",
+  "name": "@event-sdk/demo",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@crafter/event-kit-badge-3d": "workspace:*",
-    "@crafter/event-kit-core": "workspace:*",
-    "@crafter/event-kit-react": "workspace:*",
+    "@event-sdk/badge-3d": "workspace:*",
+    "@event-sdk/core": "workspace:*",
+    "@event-sdk/react": "workspace:*",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@react-three/rapier": "^2.2.0",

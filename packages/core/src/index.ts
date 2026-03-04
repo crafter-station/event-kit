@@ -22,3 +22,22 @@ export {
 	luminance,
 	saturation,
 } from "./colors";
+
+export type {
+	SponsorTier,
+	SponsorConfig,
+	DeckSlideConfig,
+	SpeakerConfig,
+	ScheduleConfig,
+	JudgesConfig,
+	JobsConfig,
+	HackathonConfig,
+	FAQItem,
+	FAQConfig,
+	CommunityConfig,
+	EventFeatures,
+	EventStyle,
+	EventConfig,
+} from "./types";
+
+export { defineEvent } from "./define-event";

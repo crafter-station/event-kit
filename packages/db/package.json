@@ -1,5 +1,5 @@
 {
-  "name": "@event-sdk/badge",
+  "name": "@event-sdk/db",
   "version": "0.0.1",
   "type": "module",
   "main": "./src/index.ts",
@@ -15,13 +15,13 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@event-sdk/core": "workspace:*",
-    "qrcode": "^1.5.4",
-    "satori": "^0.12.0",
-    "sharp": "^0.33.0"
+    "drizzle-orm": "^0.38.0",
+    "nanoid": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@neondatabase/serverless": ">=0.10.0"
   },
   "devDependencies": {
-    "@types/qrcode": "^1.5.5",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   }

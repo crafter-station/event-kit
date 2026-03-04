@@ -1,6 +1,6 @@
 "use client";
 
-import { pickAccentColor, pickReadableColor } from "@crafter/event-kit-core";
+import { pickAccentColor, pickReadableColor } from "@event-sdk/core";
 import { useEventKit } from "./context";
 
 export interface BadgeCardProps {

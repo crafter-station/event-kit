@@ -1,4 +1,4 @@
-import { hexToRgb, lighten, pickAccentColor, pickReadableColor } from "@crafter/event-kit-core";
+import { hexToRgb, lighten, pickAccentColor, pickReadableColor } from "@event-sdk/core";
 
 export interface CardTextureOptions {
 	name: string;

@@ -108,3 +108,96 @@ export interface GeneratedAsset {
 	height: number;
 	metadata?: Record<string, unknown>;
 }
+
+export interface SponsorTier {
+	id: string;
+	name: string;
+	slug: string;
+	price?: number;
+	color?: string;
+	benefits?: string[];
+	maxSponsors?: number;
+}
+
+export interface SponsorConfig {
+	tiers: SponsorTier[];
+	ctaUrl?: string;
+	ctaLabel?: string;
+	deckSlides?: DeckSlideConfig[];
+}
+
+export interface DeckSlideConfig {
+	variant: "cover" | "opportunity" | "audience" | "tiers" | "benefits" | "past-sponsors" | "contact";
+	title?: string;
+	content?: string;
+	image?: string;
+}
+
+export interface SpeakerConfig {
+	enabled: boolean;
+	ctaUrl?: string;
+}
+
+export interface ScheduleConfig {
+	enabled: boolean;
+	timezone?: string;
+}
+
+export interface JudgesConfig {
+	enabled: boolean;
+}
+
+export interface JobsConfig {
+	enabled: boolean;
+}
+
+export interface HackathonConfig {
+	enabled: boolean;
+	tracks?: {
+		name: string;
+		slug: string;
+		description?: string;
+		color?: string;
+		prizes?: { place: string; prize: string; value?: number }[];
+	}[];
+	submissionDeadline?: Date | string;
+	judgingCriteria?: { name: string; weight: number; description?: string }[];
+}
+
+export interface FAQItem {
+	question: string;
+	answer: string;
+}
+
+export interface FAQConfig {
+	items: FAQItem[];
+	contactUrl?: string;
+}
+
+export interface CommunityConfig {
+	whatsappUrl?: string;
+	discordUrl?: string;
+	twitterUrl?: string;
+}
+
+export interface EventFeatures {
+	speakers?: SpeakerConfig;
+	sponsors?: SponsorConfig;
+	schedule?: ScheduleConfig;
+	judges?: JudgesConfig;
+	jobs?: JobsConfig;
+	hackathon?: HackathonConfig;
+	faq?: FAQConfig;
+	community?: CommunityConfig;
+	badges?: boolean;
+	i18n?: boolean;
+	deck?: boolean;
+}
+
+export type EventStyle = "terminal" | "minimal" | "neobrutalist" | "corporate" | "custom";
+
+export interface EventConfig extends EventIdentity {
+	type: "conference" | "hackathon" | "meetup" | "workshop" | "hybrid";
+	style?: EventStyle;
+	features: EventFeatures;
+}

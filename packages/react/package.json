@@ -1,5 +1,5 @@
 {
-  "name": "@crafter/event-kit-react",
+  "name": "@event-sdk/react",
   "version": "0.0.1",
   "type": "module",
   "main": "./src/index.ts",
@@ -15,8 +15,8 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@crafter/event-kit-core": "workspace:*",
-    "@crafter/event-kit-badge-3d": "workspace:*"
+    "@event-sdk/core": "workspace:*",
+    "@event-sdk/badge-3d": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

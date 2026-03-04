@@ -1,7 +1,7 @@
 "use client";
 
-import type { ParticleConfig } from "@crafter/event-kit-badge-3d";
-import { FLAG_PRESETS, STYLE_PRESETS, capConfigForMobile } from "@crafter/event-kit-badge-3d";
+import type { ParticleConfig } from "@event-sdk/badge-3d";
+import { FLAG_PRESETS, STYLE_PRESETS, capConfigForMobile } from "@event-sdk/badge-3d";
 import { type KeyboardEvent, useCallback, useState } from "react";
 
 export interface ParticleInputProps {

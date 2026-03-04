@@ -1,5 +1,5 @@
 {
-  "name": "@crafter/event-kit-badge-3d",
+  "name": "@event-sdk/badge-3d",
   "version": "0.0.1",
   "type": "module",
   "main": "./src/index.ts",
@@ -15,7 +15,7 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@crafter/event-kit-core": "workspace:*",
+    "@event-sdk/core": "workspace:*",
     "zod": "^3.24.0"
   },
   "peerDependencies": {

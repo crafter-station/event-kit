@@ -1,7 +1,7 @@
 "use client";
 
 import type { ThemeStyles } from "@/lib/theme-styles";
-import { FLAG_PRESETS, STYLE_PRESETS } from "@crafter/event-kit-badge-3d";
+import { FLAG_PRESETS, STYLE_PRESETS } from "@event-sdk/badge-3d";
 
 interface PresetsSectionProps {
 	accent: string;

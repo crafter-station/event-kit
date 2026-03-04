@@ -1,8 +1,8 @@
 "use client";
 
-import type { ParticleConfig } from "@crafter/event-kit-badge-3d";
-import { defaultParticleConfig, stepParticles } from "@crafter/event-kit-badge-3d";
-import type { SimState } from "@crafter/event-kit-badge-3d";
+import type { ParticleConfig } from "@event-sdk/badge-3d";
+import { defaultParticleConfig, stepParticles } from "@event-sdk/badge-3d";
+import type { SimState } from "@event-sdk/badge-3d";
 import { Environment, Lightformer, useGLTF, useTexture } from "@react-three/drei";
 import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
 import {

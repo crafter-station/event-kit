@@ -1,10 +1,10 @@
 "use client";
 
 import type { ThemeStyles } from "@/lib/theme-styles";
-import type { ParticleConfig } from "@crafter/event-kit-badge-3d";
-import { defaultParticleConfig } from "@crafter/event-kit-badge-3d";
-import { pickAccentColor } from "@crafter/event-kit-core";
-import { BadgeCard, BadgeGenerator, ShareButton } from "@crafter/event-kit-react";
+import type { ParticleConfig } from "@event-sdk/badge-3d";
+import { defaultParticleConfig } from "@event-sdk/badge-3d";
+import { pickAccentColor } from "@event-sdk/core";
+import { BadgeCard, BadgeGenerator, ShareButton } from "@event-sdk/react";
 import { useState } from "react";
 
 interface TryItSectionProps {

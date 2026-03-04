@@ -2,9 +2,9 @@
 
 import { TEAM } from "@/lib/identity";
 import type { ThemeStyles } from "@/lib/theme-styles";
-import { generateCardTexture } from "@crafter/event-kit-badge-3d";
-import { defaultParticleConfig } from "@crafter/event-kit-badge-3d";
-import { Badge3DScene, BadgeCard } from "@crafter/event-kit-react";
+import { generateCardTexture } from "@event-sdk/badge-3d";
+import { defaultParticleConfig } from "@event-sdk/badge-3d";
+import { Badge3DScene, BadgeCard } from "@event-sdk/react";
 import { useEffect, useState } from "react";
 
 interface HeroSectionProps {

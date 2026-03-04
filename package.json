@@ -1,5 +1,5 @@
 {
-  "name": "event-kit",
+  "name": "event-sdk",
   "private": true,
   "workspaces": ["packages/*", "apps/*"],
   "scripts": {

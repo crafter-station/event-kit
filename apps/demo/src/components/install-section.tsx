@@ -1,7 +1,7 @@
 "use client";
 
 import type { ThemeStyles } from "@/lib/theme-styles";
-import { WatermarkBanner } from "@crafter/event-kit-react";
+import { WatermarkBanner } from "@event-sdk/react";
 import { useCallback, useState } from "react";
 
 interface InstallSectionProps {
@@ -11,10 +11,10 @@ interface InstallSectionProps {
 
 export function InstallSection({ accent, themeStyles }: InstallSectionProps) {
 	const [copied, setCopied] = useState(false);
-	const command = "bun add @crafter/event-kit-core @crafter/event-kit-react";
+	const command = "bun add @event-sdk/core @event-sdk/react";
 
 	const handleCopy = useCallback(async () => {
-		await navigator.clipboard.writeText("bun add @crafter/event-kit-core @crafter/event-kit-react");
+		await navigator.clipboard.writeText("bun add @event-sdk/core @event-sdk/react");
 		setCopied(true);
 		setTimeout(() => setCopied(false), 2000);
 	}, []);

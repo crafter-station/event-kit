@@ -1,4 +1,4 @@
-import type { Attendee, EventIdentity, GeneratedAsset } from "@crafter/event-kit-core";
+import type { Attendee, EventIdentity, GeneratedAsset } from "@event-sdk/core";
 
 export interface BadgeGenerateOptions {
 	attendee: Attendee;

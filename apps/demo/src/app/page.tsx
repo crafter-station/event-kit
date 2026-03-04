@@ -7,7 +7,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { TryItSection } from "@/components/try-it-section";
 import { THEMES } from "@/lib/identity";
 import { getThemeStyles } from "@/lib/theme-styles";
-import { EventKitProvider } from "@crafter/event-kit-react";
+import { EventKitProvider } from "@event-sdk/react";
 import { useState } from "react";
 
 export default function DemoPage() {

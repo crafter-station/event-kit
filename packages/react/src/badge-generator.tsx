@@ -1,8 +1,8 @@
 "use client";
 
-import type { ParticleConfig } from "@crafter/event-kit-badge-3d";
-import { defaultParticleConfig } from "@crafter/event-kit-badge-3d";
-import { pickAccentColor } from "@crafter/event-kit-core";
+import type { ParticleConfig } from "@event-sdk/badge-3d";
+import { defaultParticleConfig } from "@event-sdk/badge-3d";
+import { pickAccentColor } from "@event-sdk/core";
 import { type ReactNode, useCallback, useState } from "react";
 import { useEventKit } from "./context";
 import { ParticleInput } from "./particle-input";

@@ -1,5 +1,5 @@
-import { createEventIdentity } from "@crafter/event-kit-core";
-import type { EventIdentity } from "@crafter/event-kit-core";
+import { createEventIdentity } from "@event-sdk/core";
+import type { EventIdentity } from "@event-sdk/core";
 
 export interface ThemeConfig {
 	id: string;
