@@ -58,7 +58,7 @@ export function SubmissionForm() {
 						Track
 					</label>
 					<div className="grid grid-cols-2 gap-2">
-						{hackathon.tracks.map((track) => (
+						{hackathon.tracks.map((track: NonNullable<NonNullable<typeof event.features.hackathon>["tracks"]>[number]) => (
 							<button
 								key={track.slug}
 								type="button"
@@ -172,7 +172,7 @@ export function SubmissionForm() {
 						Judging Criteria
 					</p>
 					<div className="space-y-2">
-						{hackathon.judgingCriteria.map((c) => (
+						{hackathon.judgingCriteria.map((c: NonNullable<NonNullable<typeof event.features.hackathon>["judgingCriteria"]>[number]) => (
 							<div key={c.name} className="flex items-center justify-between text-xs">
 								<div>
 									<span className="font-medium">{c.name}</span>

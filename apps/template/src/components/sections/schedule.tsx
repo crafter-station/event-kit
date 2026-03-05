@@ -2,6 +2,7 @@
 
 import { AnimatedGroup } from "@/components/motion/animated-group";
 import { event } from "@/lib/event";
+import { useThemeStyle } from "@/lib/themes";
 
 const PLACEHOLDER_SESSIONS = [
 	{ time: "09:00", title: "Registration & Check-in", type: "break" },
@@ -22,7 +23,23 @@ const TYPE_BADGE: Record<string, string> = {
 };
 
 export function Schedule() {
+	const { styleId } = useThemeStyle();
+	const isRetro = styleId === "retro";
+	const isBrutal = styleId === "brutal";
+
 	if (!event.features.schedule?.enabled) return null;
+
+	const cardClass = isBrutal
+		? "brutalist-card flex-1 bg-[var(--surface)] p-4 transition-colors"
+		: isRetro
+			? "pixel-border-sm flex-1 bg-[var(--surface)] p-4 transition-colors"
+			: "flex-1 border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]/20";
+
+	const dotClass = isBrutal
+		? "absolute -left-[1.1rem] top-[1.1rem] h-3 w-3 bg-[var(--accent)] border-4 border-[var(--background)] shrink-0"
+		: isRetro
+			? "pixel-border-sm absolute -left-[1.1rem] top-[1.1rem] h-3 w-3 bg-[var(--accent)] border-2 border-[var(--background)] shrink-0"
+			: "absolute -left-[1.1rem] top-[1.1rem] h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-[var(--background)] shrink-0";
 
 	return (
 		<section className="py-20 px-6" id="schedule">
@@ -44,12 +61,13 @@ export function Schedule() {
 									{s.time}
 								</span>
 								<div className="relative flex items-start gap-4 flex-1">
-									<div className="absolute -left-[1.1rem] top-[1.1rem] h-3 w-3 rounded-full bg-[var(--accent)] border-2 border-[var(--background)] shrink-0" />
-									<div className="flex-1 rounded-lg border border-[var(--border)] bg-[var(--surface)] p-4 transition-colors hover:border-[var(--accent)]/20">
+									<div className={dotClass} />
+									<div className={cardClass} style={{ borderRadius: "var(--radius)" }}>
 										<div className="flex items-center justify-between gap-2">
 											<p className="text-sm font-medium">{s.title}</p>
 											<span
-												className={`rounded-full border px-2 py-0.5 text-[10px] font-mono uppercase shrink-0 ${TYPE_BADGE[s.type] ?? TYPE_BADGE.break}`}
+												className={`border px-2 py-0.5 text-[10px] font-mono uppercase shrink-0 ${TYPE_BADGE[s.type] ?? TYPE_BADGE.break}`}
+												style={{ borderRadius: "var(--radius)" }}
 											>
 												{s.type}
 											</span>

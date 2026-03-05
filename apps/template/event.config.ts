@@ -39,7 +39,7 @@ const event = defineEvent({
 			numberFormat: "###",
 		},
 	},
-	style: "terminal",
+	style: "retro",
 	features: {
 		speakers: { enabled: true },
 		sponsors: {

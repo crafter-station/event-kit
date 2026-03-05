@@ -1,5 +1,5 @@
 import { event } from "@/lib/event";
-import { fontBody, fontDisplay, fontMono } from "@/lib/fonts";
+import { fontBody, fontMono, fontPixel, fontAnalog, fontBrutal } from "@/lib/fonts";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import "./globals.css";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" suppressHydrationWarning className={`${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable}`}>
+		<html lang="en" suppressHydrationWarning className={`${fontBody.variable} ${fontMono.variable} ${fontPixel.variable} ${fontAnalog.variable} ${fontBrutal.variable}`}>
 			<body>
 				<Providers>{children}</Providers>
 			</body>

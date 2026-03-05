@@ -118,7 +118,7 @@ export function RegistrationForm() {
 							onChange={(e) => update("role", e.target.value)}
 							className="w-full rounded-lg border border-white/10 bg-[var(--surface)] px-4 py-2.5 text-sm focus:border-[var(--accent)]/50 focus:outline-none"
 						>
-							{event.roles.map((r) => (
+							{event.roles.map((r: { id: string; displayName: string }) => (
 								<option key={r.id} value={r.id}>
 									{r.displayName}
 								</option>
@@ -193,7 +193,7 @@ export function RegistrationForm() {
 						["Name", data.fullName],
 						["Email", data.email],
 						["Organization", data.organization],
-						["Role", event.roles.find((r) => r.id === data.role)?.displayName ?? data.role],
+						["Role", event.roles.find((r: { id: string; displayName: string }) => r.id === data.role)?.displayName ?? data.role],
 						["T-Shirt", data.tshirtSize],
 					].map(([label, value]) => (
 						<div key={label} className="flex justify-between text-sm">

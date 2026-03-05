@@ -1,14 +1,25 @@
 "use client";
 
 import { event } from "@/lib/event";
-import { ChevronDown } from "lucide-react";
+import { useThemeStyle } from "@/lib/themes";
+import { CaretDown } from "@phosphor-icons/react";
 import { useState } from "react";
 
 export function FAQ() {
 	const faqConfig = event.features.faq;
+	const { styleId, iconWeight } = useThemeStyle();
+	const isRetro = styleId === "retro";
+	const isBrutal = styleId === "brutal";
+
 	if (!faqConfig || faqConfig.items.length === 0) return null;
 
 	const [open, setOpen] = useState<number | null>(null);
+
+	const itemClass = isBrutal
+		? "brutalist-card bg-[var(--surface)] overflow-hidden"
+		: isRetro
+			? "pixel-border-sm bg-[var(--surface)] overflow-hidden"
+			: "border border-[var(--border)] bg-[var(--surface)] overflow-hidden";
 
 	return (
 		<section className="py-20 px-6" id="faq">
@@ -22,10 +33,11 @@ export function FAQ() {
 					</h2>
 				</div>
 				<div className="space-y-2">
-					{faqConfig.items.map((item, i) => (
+					{faqConfig.items.map((item: NonNullable<typeof event.features.faq>["items"][number], i: number) => (
 						<div
 							key={item.question}
-							className="rounded-lg border border-[var(--border)] bg-[var(--surface)] overflow-hidden"
+							className={itemClass}
+							style={{ borderRadius: "var(--radius)" }}
 						>
 							<button
 								type="button"
@@ -33,8 +45,9 @@ export function FAQ() {
 								className="flex w-full items-center justify-between p-4 text-left text-sm font-medium transition-colors hover:bg-white/[0.02]"
 							>
 								{item.question}
-								<ChevronDown
+								<CaretDown
 									size={16}
+									weight={iconWeight}
 									className={`ml-4 shrink-0 text-[var(--muted)] transition-transform duration-300 ${
 										open === i ? "rotate-180" : ""
 									}`}

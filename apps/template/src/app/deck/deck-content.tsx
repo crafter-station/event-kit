@@ -5,9 +5,9 @@ import { event } from "@/lib/event";
 import { TextEffect } from "@/components/motion/text-effect";
 import { AnimatedGroup } from "@/components/motion/animated-group";
 import { AnimatedNumber } from "@/components/motion/animated-number";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 type DeckSlide = NonNullable<NonNullable<typeof event.features.sponsors>["deckSlides"]>[number];
+type SponsorTier = NonNullable<typeof event.features.sponsors>["tiers"][number];
 
 function renderSlide(slide: DeckSlide, sponsorConfig: NonNullable<typeof event.features.sponsors>) {
 	switch (slide.variant) {
@@ -113,7 +113,7 @@ function renderSlide(slide: DeckSlide, sponsorConfig: NonNullable<typeof event.f
 						preset="blur-slide"
 						className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
 					>
-						{sponsorConfig.tiers.map((tier) => (
+						{sponsorConfig.tiers.map((tier: SponsorTier) => (
 							<div
 								key={tier.slug}
 								className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-6 hover:border-[var(--accent)]/20 transition-colors"
@@ -128,7 +128,7 @@ function renderSlide(slide: DeckSlide, sponsorConfig: NonNullable<typeof event.f
 									</p>
 								)}
 								<ul className="space-y-2">
-									{tier.benefits?.map((b) => (
+									{tier.benefits?.map((b: string) => (
 										<li key={b} className="text-sm text-[var(--muted)] flex items-start gap-2">
 											<span className="text-[var(--accent-secondary)] mt-0.5">·</span>
 											{b}
@@ -212,7 +212,7 @@ function renderSlide(slide: DeckSlide, sponsorConfig: NonNullable<typeof event.f
 						<div className="mt-8">
 							<a
 								href={sponsorConfig.ctaUrl}
-								className="inline-block rounded-md bg-[var(--accent)] px-8 py-3 text-sm font-medium text-[var(--background)] transition-all hover:opacity-90 active:scale-95"
+								className="inline-block rounded-md bg-[var(--accent)] px-8 py-3 text-sm font-medium text-[var(--accent-foreground)] transition-all hover:opacity-90 active:scale-95"
 							>
 								Become a Sponsor
 							</a>
@@ -404,7 +404,7 @@ function DeckInner({
 				}}
 				className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 			>
-				<ChevronLeft size={24} />
+				<CaretLeft size={24} weight="bold" />
 			</button>
 			<button
 				onClick={(e) => {
@@ -413,7 +413,7 @@ function DeckInner({
 				}}
 				className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 			>
-				<ChevronRight size={24} />
+				<CaretRight size={24} weight="bold" />
 			</button>
 
 			<div className="absolute bottom-8 right-8 text-[var(--muted)] text-xs hidden md:flex items-center gap-2 z-50">

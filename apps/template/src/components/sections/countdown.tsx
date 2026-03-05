@@ -2,13 +2,24 @@
 
 import { AnimatedNumber } from "@/components/motion/animated-number";
 import { event } from "@/lib/event";
+import { useThemeStyle } from "@/lib/themes";
 import { useTranslation } from "@event-sdk/i18n";
 import { useEffect, useState } from "react";
 
 export function Countdown() {
 	const { t } = useTranslation();
+	const { styleId } = useThemeStyle();
 	const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 	const [mounted, setMounted] = useState(false);
+
+	const isRetro = styleId === "retro";
+	const isBrutal = styleId === "brutal";
+
+	const cardClass = isBrutal
+		? "brutalist-card bg-[var(--surface)] p-4 md:p-6 flex flex-col items-center min-w-[72px] md:min-w-[96px]"
+		: isRetro
+			? "pixel-border bg-[var(--surface)] p-4 md:p-6 flex flex-col items-center min-w-[72px] md:min-w-[96px] hover:crt-glow transition-all"
+			: "bg-[var(--surface)] border border-[var(--border)] p-4 md:p-6 flex flex-col items-center min-w-[72px] md:min-w-[96px]";
 
 	useEffect(() => {
 		setMounted(true);
@@ -46,7 +57,7 @@ export function Countdown() {
 				<div className="flex items-center justify-center gap-3 md:gap-4">
 					{units.map((u, i) => (
 						<div key={u.label} className="flex items-center gap-3 md:gap-4">
-							<div className="bg-[var(--surface)] border border-[var(--border)] rounded-lg p-4 md:p-6 flex flex-col items-center min-w-[72px] md:min-w-[96px]">
+							<div className={cardClass} style={{ borderRadius: "var(--radius)" }}>
 								<span className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-bold tabular-nums font-mono">
 									{mounted ? (
 										<AnimatedNumber

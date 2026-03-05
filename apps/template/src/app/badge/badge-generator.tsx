@@ -57,7 +57,7 @@ export function BadgeGenerator() {
 							onChange={(e) => setRole(e.target.value)}
 							className="w-full rounded-lg border border-white/10 bg-[var(--surface)] px-4 py-2.5 text-sm focus:border-[var(--accent)]/50 focus:outline-none transition-colors"
 						>
-							{event.roles.map((r) => (
+							{event.roles.map((r: { id: string; displayName: string }) => (
 								<option key={r.id} value={r.id}>
 									{r.displayName}
 								</option>
@@ -127,7 +127,7 @@ export function BadgeGenerator() {
 							</p>
 							<p className="text-lg font-bold">{name}</p>
 							<p className="text-xs text-[var(--muted)]">
-								{event.roles.find((r) => r.id === role)?.displayName}
+								{event.roles.find((r: { id: string; displayName: string }) => r.id === role)?.displayName}
 							</p>
 							{organization && <p className="text-xs text-[var(--muted)]">{organization}</p>}
 							<p className="font-mono text-xs text-[var(--accent)]">#001</p>

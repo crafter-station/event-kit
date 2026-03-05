@@ -1,21 +1,22 @@
-import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { GeistPixelSquare } from "geist/font/pixel";
+import { Instrument_Serif, Space_Grotesk } from "next/font/google";
 
-const fontDisplay = Playfair_Display({
+const instrumentSerif = Instrument_Serif({
 	subsets: ["latin"],
-	weight: ["700", "900"],
-	variable: "--font-display",
+	weight: ["400"],
+	variable: "--font-display-analog",
 });
 
-const fontBody = Inter({
+const spaceGrotesk = Space_Grotesk({
 	subsets: ["latin"],
-	weight: ["400", "500", "600"],
-	variable: "--font-body",
+	weight: ["500", "700"],
+	variable: "--font-display-brutal",
 });
 
-const fontMono = JetBrains_Mono({
-	subsets: ["latin"],
-	weight: ["400", "500"],
-	variable: "--font-mono",
-});
-
-export { fontDisplay, fontBody, fontMono };
+export const fontBody = GeistSans;
+export const fontMono = GeistMono;
+export const fontPixel = GeistPixelSquare;
+export const fontAnalog = instrumentSerif;
+export const fontBrutal = spaceGrotesk;

@@ -2,6 +2,7 @@
 
 import { AnimatedGroup } from "@/components/motion/animated-group";
 import { event } from "@/lib/event";
+import { useThemeStyle } from "@/lib/themes";
 
 const PLACEHOLDER_SPEAKERS = [
 	{ name: "Jane Doe", title: "ML Engineer", company: "TechCorp", talk: "Building RAG at Scale" },
@@ -23,7 +24,17 @@ function Avatar({ name, photo }: { name: string; photo?: string }) {
 }
 
 export function Speakers() {
+	const { styleId } = useThemeStyle();
+	const isRetro = styleId === "retro";
+	const isBrutal = styleId === "brutal";
+
 	if (!event.features.speakers?.enabled) return null;
+
+	const cardClass = isBrutal
+		? "brutalist-card bg-[var(--surface)] p-6 transition-all duration-300"
+		: isRetro
+			? "pixel-border-sm bg-[var(--surface)] p-6 transition-all duration-300 hover:scanlines"
+			: "border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:scale-[1.02] hover:border-[var(--accent)]/20";
 
 	return (
 		<section className="py-20 px-6" id="speakers">
@@ -44,7 +55,8 @@ export function Speakers() {
 					{PLACEHOLDER_SPEAKERS.map((s) => (
 						<div
 							key={s.name}
-							className="rounded-lg border border-[var(--border)] bg-[var(--surface)] p-6 transition-all duration-300 hover:scale-[1.02] hover:border-[var(--accent)]/20"
+							className={cardClass}
+							style={{ borderRadius: "var(--radius)" }}
 						>
 							<div className="mb-4">
 								<Avatar name={s.name} />

@@ -1,8 +1,9 @@
 "use client";
 
 import { event } from "@/lib/event";
+import { useThemeStyle } from "@/lib/themes";
 import { useTranslation } from "@event-sdk/i18n";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { List, Moon, Sun, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -19,6 +20,7 @@ export function Navbar() {
 	const { theme, setTheme } = useTheme();
 	const pathname = usePathname();
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const { styleId, setStyleId, iconWeight } = useThemeStyle();
 
 	const links = NAV_LINKS(t);
 
@@ -57,24 +59,44 @@ export function Navbar() {
 							{t.nav.myBadge}
 						</Link>
 					)}
+					<div className="flex items-center gap-1 rounded-full border border-[var(--border)] p-0.5">
+						{(["analog", "retro", "brutal"] as const).map((s) => (
+							<button
+								key={s}
+								type="button"
+								onClick={() => setStyleId(s)}
+								className={`px-2 py-0.5 text-[10px] font-mono transition-colors ${
+									styleId === s
+										? "bg-[var(--accent)] text-[var(--accent-foreground)]"
+										: "text-[var(--muted)] hover:text-[var(--foreground)]"
+								}`}
+								style={{ borderRadius: `var(--radius)` }}
+							>
+								{s[0].toUpperCase() + s.slice(1)}
+							</button>
+						))}
+					</div>
 					<button
 						type="button"
 						onClick={toggleLocale}
-						className="rounded border border-[var(--border)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						className="border border-[var(--border)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						style={{ borderRadius: "var(--radius)" }}
 					>
 						{locale === "en" ? "ES" : "EN"}
 					</button>
 					<button
 						type="button"
 						onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-						className="rounded border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						className="border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						style={{ borderRadius: "var(--radius)" }}
 						aria-label="Toggle theme"
 					>
-						{theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+						{theme === "dark" ? <Sun size={14} weight={iconWeight} /> : <Moon size={14} weight={iconWeight} />}
 					</button>
 					<Link
 						href="/register"
-						className="rounded-md bg-[var(--accent)] px-4 py-1.5 text-xs font-medium text-[var(--background)] transition-all hover:opacity-90 active:scale-95"
+						className="bg-[var(--accent)] px-4 py-1.5 text-xs font-medium text-[var(--accent-foreground)] transition-all hover:opacity-90 active:scale-95"
+						style={{ borderRadius: "var(--radius)" }}
 					>
 						{t.nav.register}
 					</Link>
@@ -84,18 +106,20 @@ export function Navbar() {
 					<button
 						type="button"
 						onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-						className="rounded border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						className="border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						style={{ borderRadius: "var(--radius)" }}
 						aria-label="Toggle theme"
 					>
-						{theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+						{theme === "dark" ? <Sun size={14} weight={iconWeight} /> : <Moon size={14} weight={iconWeight} />}
 					</button>
 					<button
 						type="button"
 						onClick={() => setMobileOpen((v) => !v)}
-						className="rounded border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						className="border border-[var(--border)] p-1.5 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+						style={{ borderRadius: "var(--radius)" }}
 						aria-label="Toggle menu"
 					>
-						{mobileOpen ? <X size={16} /> : <Menu size={16} />}
+						{mobileOpen ? <X size={16} weight={iconWeight} /> : <List size={16} weight={iconWeight} />}
 					</button>
 				</div>
 			</div>
@@ -131,13 +155,15 @@ export function Navbar() {
 						<button
 							type="button"
 							onClick={toggleLocale}
-							className="rounded border border-[var(--border)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+							className="border border-[var(--border)] px-2 py-1 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+							style={{ borderRadius: "var(--radius)" }}
 						>
 							{locale === "en" ? "ES" : "EN"}
 						</button>
 						<Link
 							href="/register"
-							className="rounded-md bg-[var(--accent)] px-4 py-1.5 text-xs font-medium text-[var(--background)] transition-all hover:opacity-90 active:scale-95"
+							className="bg-[var(--accent)] px-4 py-1.5 text-xs font-medium text-[var(--accent-foreground)] transition-all hover:opacity-90 active:scale-95"
+							style={{ borderRadius: "var(--radius)" }}
 							onClick={() => setMobileOpen(false)}
 						>
 							{t.nav.register}

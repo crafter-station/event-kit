@@ -1,8 +1,13 @@
+"use client";
+
 import { event } from "@/lib/event";
-import { MessageCircle } from "lucide-react";
+import { useThemeStyle } from "@/lib/themes";
+import { DiscordLogo, WhatsappLogo } from "@phosphor-icons/react";
 
 export function Community() {
 	const community = event.features.community;
+	const { iconWeight } = useThemeStyle();
+
 	if (!community) return null;
 
 	return (
@@ -23,9 +28,10 @@ export function Community() {
 							href={community.whatsappUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 rounded-md bg-[#25D366] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 active:scale-95"
+							className="inline-flex items-center gap-2 border border-[var(--border)] bg-[var(--surface)] px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-all hover:bg-[var(--accent)]/10"
+							style={{ borderRadius: "var(--radius)" }}
 						>
-							<MessageCircle size={16} />
+							<WhatsappLogo size={16} weight={iconWeight} className="text-[#25D366]" />
 							Join WhatsApp
 						</a>
 					)}
@@ -34,9 +40,10 @@ export function Community() {
 							href={community.discordUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="inline-flex items-center gap-2 rounded-md bg-[#5865F2] px-6 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 active:scale-95"
+							className="inline-flex items-center gap-2 border border-[var(--border)] bg-[var(--surface)] px-6 py-2.5 text-sm font-medium text-[var(--foreground)] transition-all hover:bg-[var(--accent)]/10"
+							style={{ borderRadius: "var(--radius)" }}
 						>
-							<MessageCircle size={16} />
+							<DiscordLogo size={16} weight={iconWeight} className="text-[#5865F2]" />
 							Join Discord
 						</a>
 					)}

@@ -83,7 +83,7 @@ export default function SubmissionsPage() {
 							<span className="rounded-full border border-[var(--accent)]/30 bg-[var(--accent)]/5 px-3 py-1 text-xs font-mono text-[var(--accent)]">
 								All
 							</span>
-							{tracks.map((track) => (
+							{tracks.map((track: NonNullable<NonNullable<typeof event.features.hackathon>["tracks"]>[number]) => (
 								<span
 									key={track.slug}
 									className="rounded-full border border-white/10 px-3 py-1 text-xs font-mono text-[var(--muted)] hover:text-white cursor-pointer transition-colors"
@@ -96,7 +96,7 @@ export default function SubmissionsPage() {
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 						{PLACEHOLDER_SUBMISSIONS.map((sub) => {
-							const track = tracks.find((t) => t.slug === sub.track);
+							const track = tracks.find((t: NonNullable<NonNullable<typeof event.features.hackathon>["tracks"]>[number]) => t.slug === sub.track);
 							return (
 								<div
 									key={sub.title}

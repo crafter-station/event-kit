@@ -23,7 +23,7 @@ export function defineEvent(config: DefineEventInput): EventConfig {
 	return {
 		...identity,
 		type: config.type,
-		style: config.style ?? "terminal",
+		style: config.style ?? "analog",
 		features: config.features
 			? {
 					...DEFAULT_FEATURES,

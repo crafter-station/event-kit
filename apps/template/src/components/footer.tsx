@@ -1,7 +1,12 @@
+"use client";
+
 import { event } from "@/lib/event";
-import { Github, MessageCircle, Twitter } from "lucide-react";
+import { useThemeStyle } from "@/lib/themes";
+import { DiscordLogo, GithubLogo, XLogo } from "@phosphor-icons/react";
 
 export function Footer() {
+	const { iconWeight } = useThemeStyle();
+
 	return (
 		<footer className="border-t border-[var(--border)] py-12 px-4">
 			<div className="mx-auto max-w-6xl flex flex-col md:flex-row justify-between gap-8">
@@ -16,7 +21,7 @@ export function Footer() {
 							aria-label="GitHub"
 							className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 						>
-							<Github size={20} />
+							<GithubLogo size={20} weight={iconWeight} />
 						</a>
 						<a
 							href="https://x.com/crafterstation"
@@ -25,14 +30,14 @@ export function Footer() {
 							aria-label="X (Twitter)"
 							className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 						>
-							<Twitter size={20} />
+							<XLogo size={20} weight={iconWeight} />
 						</a>
 						<a
 							href="#community"
 							aria-label="Discord"
 							className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
 						>
-							<MessageCircle size={20} />
+							<DiscordLogo size={20} weight={iconWeight} />
 						</a>
 					</div>
 				</div>

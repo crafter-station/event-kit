@@ -201,7 +201,7 @@ export interface EventFeatures {
 	deck?: boolean;
 }
 
-export type EventStyle = "terminal" | "minimal" | "neobrutalist" | "corporate" | "custom";
+export type EventStyle = "analog" | "retro" | "brutal" | "custom";
 
 export interface EventConfig extends EventIdentity {
 	type: "conference" | "hackathon" | "meetup" | "workshop" | "hybrid";

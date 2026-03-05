@@ -1,28 +1,6 @@
 @import "tailwindcss";
 @source "../../";
 
-@layer base {
-	:root {
-		--background: #0c0b09;
-		--foreground: #f5f0e8;
-		--muted: #7a7060;
-		--accent: #e8ded2;
-		--accent-secondary: #c8205b;
-		--surface: #141210;
-		--border: #2a2520;
-	}
-
-	.light {
-		--background: #f5f0e8;
-		--foreground: #1a1816;
-		--muted: #8a8070;
-		--accent: #2a2520;
-		--accent-secondary: #c8205b;
-		--surface: #ebe5da;
-		--border: #d4cdc2;
-	}
-}
-
 body {
 	background: var(--background);
 	color: var(--foreground);
@@ -49,9 +27,119 @@ a {
 
 ::selection {
 	background: var(--accent);
-	color: var(--background);
+	color: var(--accent-foreground);
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+.pixel-border {
+	box-shadow:
+		3px 0 0 0 currentColor,
+		-3px 0 0 0 currentColor,
+		0 3px 0 0 currentColor,
+		0 -3px 0 0 currentColor;
+}
+
+.pixel-border-sm {
+	box-shadow:
+		2px 0 0 0 currentColor,
+		-2px 0 0 0 currentColor,
+		0 2px 0 0 currentColor,
+		0 -2px 0 0 currentColor;
+}
+
+.scanlines {
+	position: relative;
+}
+
+.scanlines::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.03) 2px,
+		rgba(0, 0, 0, 0.03) 4px
+	);
+	pointer-events: none;
+	z-index: 10;
+}
+
+.dark .scanlines::after {
+	background: repeating-linear-gradient(
+		0deg,
+		transparent,
+		transparent 2px,
+		rgba(0, 0, 0, 0.1) 2px,
+		rgba(0, 0, 0, 0.1) 4px
+	);
+}
+
+.crt-glow {
+	box-shadow:
+		0 0 20px rgba(0, 255, 65, 0.2),
+		inset 0 0 40px rgba(0, 255, 65, 0.05);
+}
+
+@keyframes blink {
+	0%, 50% { opacity: 1; }
+	51%, 100% { opacity: 0; }
+}
+
+.blink {
+	animation: blink 1s step-end infinite;
+}
+
+.brutalist-border {
+	border: 3px solid var(--border);
+}
+
+.brutalist-shadow {
+	box-shadow: 6px 6px 0px var(--border);
+}
+
+.brutalist-shadow-sm {
+	box-shadow: 4px 4px 0px var(--border);
+}
+
+.brutalist-card {
+	border: 3px solid var(--border);
+	box-shadow: 6px 6px 0px var(--border);
+	transition: all 0.1s ease;
+}
+
+.brutalist-card:hover {
+	transform: translate(2px, 2px);
+	box-shadow: 4px 4px 0px var(--border);
+}
+
+.brutalist-button {
+	border: 3px solid var(--border);
+	box-shadow: 4px 4px 0px var(--border);
+	transition: all 0.1s ease;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.brutalist-button:hover {
+	transform: translate(1px, 1px);
+	box-shadow: 3px 3px 0px var(--border);
+}
+
+.brutalist-button:active {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0px var(--border);
+}
+
+.grid-overlay {
+	background-image:
+		linear-gradient(to right, var(--border) 1px, transparent 1px),
+		linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+	background-size: 64px 64px;
+	opacity: 0.15;
 }

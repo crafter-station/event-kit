@@ -2,6 +2,8 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { event } from "@/lib/event";
 
+type SponsorTier = NonNullable<typeof event.features.sponsors>["tiers"][number];
+
 export const metadata = {
 	title: `Sponsors | ${event.name}`,
 };
@@ -22,7 +24,7 @@ export default function SponsorsPage() {
 							Our <span className="text-[var(--accent)]">Sponsors</span>
 						</h1>
 					</div>
-					{sponsorConfig?.tiers.map((tier) => (
+					{sponsorConfig?.tiers.map((tier: SponsorTier) => (
 						<div key={tier.id} className="mb-12">
 							<h2
 								className="font-mono text-sm uppercase tracking-widest mb-4"
@@ -38,7 +40,7 @@ export default function SponsorsPage() {
 								</div>
 								{tier.benefits && (
 									<div className="mt-6 flex flex-wrap gap-2 justify-center">
-										{tier.benefits.map((b) => (
+										{tier.benefits.map((b: string) => (
 											<span
 												key={b}
 												className="rounded-full border border-white/10 px-3 py-1 text-xs text-[var(--muted)]"
