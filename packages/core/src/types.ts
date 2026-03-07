@@ -154,6 +154,12 @@ export interface JudgesConfig {
 	enabled: boolean;
 }
 
+export interface MentorsConfig {
+	enabled: boolean;
+	ctaUrl?: string;
+	ctaLabel?: string;
+}
+
 export interface JobsConfig {
 	enabled: boolean;
 }
@@ -187,15 +193,67 @@ export interface CommunityConfig {
 	twitterUrl?: string;
 }
 
+export interface CommunityPartnersConfig {
+	enabled: boolean;
+}
+
+export interface FilterSettings {
+	bgBlur: number;
+	bgGrain: number;
+	faceGrain: number;
+	faceTintHex: string;
+	faceTintOpacity: number;
+	accentColor: string;
+	overlay: boolean;
+	autoPosition: boolean;
+	panX: number;
+	panY: number;
+	zoom: number;
+}
+
+export interface FaceBox {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
+
+export interface FaceDetectionResult {
+	faceBox: FaceBox;
+	rightHalfBox: FaceBox;
+	eyesRegion: FaceBox;
+	smileRegion: FaceBox;
+	landmarks: { x: number; y: number }[];
+}
+
+export type PosterTemplateType = "half-face" | "eyes" | "smile" | "full";
+
+export interface RegistrationProvider {
+	name: string;
+	checkRegistration(email: string): Promise<RegistrationCheckResult>;
+}
+
+export type RegistrationCheckResult =
+	| { registered: true; name: string; metadata?: Record<string, unknown> }
+	| { registered: false; error: "not_found" | "not_approved" | "unknown" };
+
+export interface RegistrationConfig {
+	provider?: "luma" | "eventbrite" | "custom";
+	requireVerification?: boolean;
+}
+
 export interface EventFeatures {
 	speakers?: SpeakerConfig;
 	sponsors?: SponsorConfig;
 	schedule?: ScheduleConfig;
 	judges?: JudgesConfig;
+	mentors?: MentorsConfig;
 	jobs?: JobsConfig;
 	hackathon?: HackathonConfig;
 	faq?: FAQConfig;
 	community?: CommunityConfig;
+	communityPartners?: CommunityPartnersConfig;
+	registration?: RegistrationConfig;
 	badges?: boolean;
 	i18n?: boolean;
 	deck?: boolean;

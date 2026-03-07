@@ -30,14 +30,34 @@ export type {
 	SpeakerConfig,
 	ScheduleConfig,
 	JudgesConfig,
+	MentorsConfig,
 	JobsConfig,
 	HackathonConfig,
 	FAQItem,
 	FAQConfig,
 	CommunityConfig,
+	CommunityPartnersConfig,
+	FilterSettings,
+	FaceBox,
+	FaceDetectionResult,
+	PosterTemplateType,
+	RegistrationProvider,
+	RegistrationCheckResult,
+	RegistrationConfig,
 	EventFeatures,
 	EventStyle,
 	EventConfig,
 } from "./types";
 
 export { defineEvent } from "./define-event";
+
+export { createLumaProvider, type LumaProviderOptions } from "./providers/luma";
+
+export type { StorageProvider } from "./providers/storage";
+
+export {
+	buildOGImageElement,
+	buildBadgeOGElement,
+	type OGImageOptions,
+	type BadgeOGOptions,
+} from "./og";
