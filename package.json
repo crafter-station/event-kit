@@ -3,7 +3,7 @@
 	"private": true,
 	"workspaces": ["packages/*", "apps/*"],
 	"scripts": {
-		"build": "bun run --filter './packages/*' build",
+		"build": "bun run --filter '@event-sdk/core' --filter '@event-sdk/i18n' build && bun run --filter '@event-sdk/db' --filter '@event-sdk/badge' --filter '@event-sdk/badge-3d' --filter '@event-sdk/poster' build && bun run --filter '@event-sdk/api' --filter '@event-sdk/react' --filter '@event-sdk/ui' build",
 		"check": "biome check --write .",
 		"test": "bun run --filter './packages/*' test",
 		"clean": "rm -rf packages/*/dist apps/*/dist",
