@@ -24,4 +24,19 @@ export type {
 	NewHackathonTeam,
 	HackathonSubmission,
 	NewHackathonSubmission,
+	Mentor,
+	NewMentor,
+	CommunityPartner,
+	NewCommunityPartner,
+	Poster,
+	NewPoster,
 } from "./schema";
+
+export { createDB, type Database } from "./connection";
+export {
+	createQueries,
+	createAttendeeQueries,
+	createBadgeQueries,
+	createEventQueries,
+	createPosterQueries,
+} from "./queries";

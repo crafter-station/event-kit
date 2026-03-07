@@ -135,6 +135,45 @@ export const judges = pgTable("judges", {
 	updatedAt: timestamp("updated_at").defaultNow(),
 });
 
+export const mentors = pgTable("mentors", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	eventId: text("event_id")
+		.notNull()
+		.references(() => events.id, { onDelete: "cascade" }),
+	name: text("name").notNull(),
+	slug: text("slug").notNull(),
+	title: text("title"),
+	company: text("company"),
+	bio: text("bio"),
+	photoUrl: text("photo_url"),
+	mentoringArea: text("mentoring_area"),
+	availability: text("availability"),
+	linkedin: text("linkedin"),
+	twitter: text("twitter"),
+	websiteUrl: text("website_url"),
+	sortOrder: integer("sort_order").default(0),
+	createdAt: timestamp("created_at").defaultNow(),
+	updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+export const communityPartners = pgTable("community_partners", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	eventId: text("event_id")
+		.notNull()
+		.references(() => events.id, { onDelete: "cascade" }),
+	name: text("name").notNull(),
+	slug: text("slug").notNull(),
+	logoUrl: text("logo_url"),
+	websiteUrl: text("website_url"),
+	sortOrder: integer("sort_order").default(0),
+	createdAt: timestamp("created_at").defaultNow(),
+	updatedAt: timestamp("updated_at").defaultNow(),
+});
+
 export const attendees = pgTable("attendees", {
 	id: text("id")
 		.primaryKey()
@@ -197,6 +236,26 @@ export const badges = pgTable("badges", {
 	imageUrl: text("image_url"),
 	generatedAt: timestamp("generated_at"),
 	createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const posters = pgTable("posters", {
+	id: text("id")
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	attendeeId: text("attendee_id")
+		.notNull()
+		.references(() => attendees.id, { onDelete: "cascade" }),
+	eventId: text("event_id")
+		.notNull()
+		.references(() => events.id, { onDelete: "cascade" }),
+	number: integer("number"),
+	photoUrl: text("photo_url"),
+	renderedUrl: text("rendered_url"),
+	template: text("template").$type<"half-face" | "eyes" | "smile" | "full">().default("half-face"),
+	filterSettings: jsonb("filter_settings"),
+	faceDetection: jsonb("face_detection"),
+	createdAt: timestamp("created_at").defaultNow(),
+	updatedAt: timestamp("updated_at").defaultNow(),
 });
 
 export const hackathonTracks = pgTable("hackathon_tracks", {
@@ -298,3 +357,12 @@ export type NewHackathonTeam = typeof hackathonTeams.$inferInsert;
 
 export type HackathonSubmission = typeof hackathonSubmissions.$inferSelect;
 export type NewHackathonSubmission = typeof hackathonSubmissions.$inferInsert;
+
+export type Mentor = typeof mentors.$inferSelect;
+export type NewMentor = typeof mentors.$inferInsert;
+
+export type CommunityPartner = typeof communityPartners.$inferSelect;
+export type NewCommunityPartner = typeof communityPartners.$inferInsert;
+
+export type Poster = typeof posters.$inferSelect;
+export type NewPoster = typeof posters.$inferInsert;
